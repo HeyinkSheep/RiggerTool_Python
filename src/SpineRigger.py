@@ -34,6 +34,7 @@ class SpineRigger:
         self.afterRoot =""
         self.jnt = []
         self.SpineParts = 6
+        self.controlerSize = 5
 
     def AutoFindJntBasedonSelection(self):
         self.jnts.clear()
@@ -85,12 +86,12 @@ class SpineRiggerWidget(QWidget):
 
           SetRootjntBtn = QPushButton(" Please select Root and Press here")
           self.masterLayout.addWidget(SetRootjntBtn)
-          SetRootjntBtn.clicked.connect(self.SetRootjntBtnClicked)
+          SetRootjntBtn.clicked.connect(self.SetRootJntBtnClicked)
           self.RootSelectionDisplay = QLabel()
           self.masterLayout.addWidget(self.RootSelectionDisplay)
 
           SpineJntName = QLabel("How may Spine Jnts to create")
-          self.masterLayout.addWiget(SpineJntName)
+          self.masterLayout.addWidget(SpineJntName)
           self.ctrlSize = QLineEdit()
           self.ctrlSize.setValidator(QDoubleValidator())
           self.ctrlSize.textChanged.connect(self.SetNumberOfSpineJntName)
@@ -98,7 +99,7 @@ class SpineRiggerWidget(QWidget):
 
           autoFindJntsBtn = QPushButton("Auto Find spine Jnts")
           self.masterLayout.addWidget(autoFindJntsBtn)
-          autoFindJntsBtn.clicked.connect(self.AutoFindBtnClicked)
+          autoFindJntsBtn.clicked.connect(self. AutoFindJntsBtnClicked)
           self.SpineSelectionDisplay = QLabel()
           self.masterLayout.addWidget(autoFindJntsBtn)
 
@@ -109,22 +110,22 @@ class SpineRiggerWidget(QWidget):
           self.adjustSize()
           self.SpineRigger = SpineRigger()
 
-     def SetNumberOfSpineParts(self, valStr:str):
-           SpinePrts = int(valStr)
-           self.SpineJntChain.SpineParts = SpinePrts
+     def SetNumberOfSpineJntName(self, valStr:str):
+           spinectrlsname = int(valStr)
+           self.SpineRigger.spinectrlsname = spinectrlsname
            
      def AutoFindJntsBtnClicked(self):
                 print("button")
-                self.SpineJntChain.AutoFindJntBasedonSelection()
-                self.SpineSelectionDisplay.setText(f"{self.SpineJntChain.afterRoot}, {self.SpineJntChain.jnts}")
+                self.SpineRigger.AutoFindJntBasedonSelection()
+                self.SpineSelectionDisplay.setText(f"{self.SpineRigger.afterRoot}, {self.SpineRigger.jnts}")
 
-     def AutoRigBtnClicked(self):
+     def AutoRigJntBtnClicked(self):
                 print("clicker")
-                self.SpineJntChain.AutoRigSpine()
+                self.SpineRigger.AutoRigSpineJntsCtrls()
             
      def SetRootJntBtnClicked(self):
-                self.SpineJntChain.root = mc.ls(sl=True,type = "joint")[0]
-                self.RootSelectionDisplay.setText(f"{self.SpineJntChain.root}")
+                self.SpineRigger.root = mc.ls(sl=True,type = "joint")[0]
+                self.RootSelectionDisplay.setText(f"{self.SpineRigger.root}")
 
 
 

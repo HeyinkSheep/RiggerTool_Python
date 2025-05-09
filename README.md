@@ -4,11 +4,15 @@ this small plugin too will help make rigging the spine a lot more easier (hopefu
 
 ## Spine Auto Tool
 
+<img src="./assets/SpineRigger.PNG" width=400>
+
 [SpineRigger]("./src/SpineRigger.py")
 [google]("https://ww.google.com")
 this tools help create the spines joints and ctrls
 
-* Spines joints
-* Spine ctrls
+* support auto joint finding
+* controller size control
+* create a build contections of joints
 
-#Update Log: April/24/25
+
+#Update Log: May/8/25
